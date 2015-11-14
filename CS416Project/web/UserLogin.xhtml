@@ -15,9 +15,15 @@
         </h:form>
         <h1>New User Registration</h1>
         <h:form>
-        <h:inputText label="User Name" value="#{user.userName}" required="true">
-        <f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>
-        <h:inputText label="User Password" value="#{user.userPassword}" required="true"></h:inputText>
+            <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+                <h:inputText label="User Name" value="#{user.userName}" required="true">
+                <f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>
+                
+                <h:inputText label="User Password" value="#{user.userPassword}" required="true"></h:inputText>
+                <h:panelGroup></h:panelGroup>
+                
+                <h:commandButton action="#{customerController.saveCustomer}" value="Save"></h:commandButton>
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>
