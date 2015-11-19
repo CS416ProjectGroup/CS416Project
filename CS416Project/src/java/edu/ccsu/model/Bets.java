@@ -6,25 +6,31 @@
 package edu.ccsu.model;
 
 import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
  *
  * @author Krzysztof
  */
+@ManagedBean
+@SessionScoped
 @Entity
-@Table(name = "Bets")
+
 public class Bets implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int id;
     private Double bet;
     private Double win;
+    @ManyToOne
     private int userId;
     public Bets(){}
     public int getId() {
