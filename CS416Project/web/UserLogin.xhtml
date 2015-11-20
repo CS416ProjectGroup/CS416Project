@@ -12,7 +12,10 @@
         <h:messages style="color:red;font-weight:bold;"></h:messages>
         <h:form>
             <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
-            <h:inputText label="User Name" value="" required="true"></h:inputText>
+                <h:inputText label="User Name" value="" required="true">
+                    <f:validator
+                        validatorId="betsCustomValidator" />
+                </h:inputText>
             <h:inputText label="Password" value="" required="true"></h:inputText>
             <h:commandButton action="#{userController.existingUser}" value="Login"></h:commandButton>
             </h:panelGrid>
