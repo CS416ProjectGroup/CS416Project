@@ -15,16 +15,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @ManagedBean
-@SessionScoped
 @Entity
 public class User implements Serializable {
 
     @Id
     @GeneratedValue
     private Long userId;
-    private String userName = "";
-    private String userPassword = "";
-    private double money = new Long(0);
+    private String userName;
+    private String userPassword;
+    private Double money;
 
 
     public User() {
@@ -83,7 +82,7 @@ public class User implements Serializable {
     /**
      * @param stateOwned the stateOwned to set
      */
-    public void setMoney(double money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 
