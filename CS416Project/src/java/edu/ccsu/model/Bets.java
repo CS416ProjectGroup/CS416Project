@@ -27,20 +27,20 @@ import javax.persistence.Table;
 public class Bets implements Serializable {
 
 
-        
+
     @Id
     @GeneratedValue
     private Long betId;
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;
+    private Users users;
     private Double bet;
     private Double win;
 
-    
+
     public Bets()
     {}
-    
+
     public Long getBetId() {
         return betId;
     }
@@ -50,7 +50,7 @@ public class Bets implements Serializable {
     public Double getWin() {
         return win;
     }
-    
+
     public void setBetId(Long id) {
         this.betId = id;
     }
@@ -65,5 +65,5 @@ public class Bets implements Serializable {
     public String toString() {
         return "edu.ccsu.model.Bets[ id=" + betId + " ]";
     }
-    
+
 }

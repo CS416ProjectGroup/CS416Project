@@ -20,11 +20,10 @@
         </h:form>
         <h1>New User Registration</h1>
         <h:form>
-            <h:inputText label="User Name" value="#{user.userName}" required="true">
+            <h:inputText label="User Name" value="#{users.userName}" required="true">
             <f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>
-            <h:inputText label="Password" value="#{user.userPassword}" required="true"></h:inputText>
+            <h:inputText label="Password" value="#{users.userPassword}" required="true"></h:inputText>
             <h:commandButton action="#{userController.userRegistration}" value="Create New User"></h:commandButton>
         </h:form>
     </h:body>
 </html>
-

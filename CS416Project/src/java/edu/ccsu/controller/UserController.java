@@ -5,7 +5,7 @@
  */
 package edu.ccsu.controller;
 
-import edu.ccsu.model.User;
+import edu.ccsu.model.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
@@ -28,19 +28,19 @@ public class UserController {
     private EntityManagerFactory entityManagerFactory;
     @Resource
     private UserTransaction userTransaction;
-    @ManagedProperty(value = "#{user}")
-    private User user;
+    @ManagedProperty(value = "#{users}")
+    private Users users;
     
     public String userRegistration() {
         String returnValue = "error";
         try {
-            user.setMoney(50.0);
+            users.setMoney(40.0);
             userTransaction.begin();
             EntityManager em = entityManagerFactory.createEntityManager();
-            em.persist(user);
+            em.persist(users);
             userTransaction.commit();
             em.close();
-            returnValue = "userProfile";
+            returnValue = "UserProfile";
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,14 +50,14 @@ public class UserController {
         /**
      * @return the user
      */
-    public User getUser() {
-        return user;
+    public Users getUsers() {
+        return users;
     }
 
     /**
      * @param user the user to set
      */
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }
