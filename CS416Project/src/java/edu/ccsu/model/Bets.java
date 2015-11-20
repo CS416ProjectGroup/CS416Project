@@ -24,16 +24,13 @@ import javax.persistence.Table;
 @SessionScoped
 @Entity
 
-public class Bets implements Serializable {
-
-
-        
+public class Bets implements Serializable {     
     @Id
     @GeneratedValue
     private Long betId;
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;
+    private Users users;
     private Double bet;
     private Double win;
 

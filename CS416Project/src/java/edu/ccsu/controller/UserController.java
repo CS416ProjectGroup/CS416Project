@@ -5,7 +5,7 @@
  */
 package edu.ccsu.controller;
 
-import edu.ccsu.model.User;
+import edu.ccsu.model.Users;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
@@ -29,7 +29,7 @@ public class UserController {
     @Resource
     private UserTransaction userTransaction;
     @ManagedProperty(value = "#{user}")
-    private User user;
+    private Users user;
     
     public String userRegistration() {
         String returnValue = "error";
@@ -50,14 +50,14 @@ public class UserController {
         /**
      * @return the user
      */
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
     /**
      * @param user the user to set
      */
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 }

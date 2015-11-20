@@ -16,7 +16,7 @@ import javax.persistence.Id;
 
 @ManagedBean
 @Entity
-public class User implements Serializable {
+public class Users implements Serializable {
 
     @Id
     @GeneratedValue
@@ -26,7 +26,7 @@ public class User implements Serializable {
     private Double money;
 
 
-    public User() {
+    public Users() {
     }
 
 
