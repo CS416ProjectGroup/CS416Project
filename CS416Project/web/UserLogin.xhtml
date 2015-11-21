@@ -7,23 +7,29 @@
         <title>User Login</title>
     </h:head>
     <h:body>
-        <h1>User Login</h1>
-        <h:outputStylesheet library="css" name="styles.css"/>
+        <h1>CasinoNavigationBanner</h1>
+        <hr></hr>
+        <h3>User Login</h3>
         <h:messages style="color:red;font-weight:bold;"></h:messages>
         <h:form>
             <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
-            <h:inputText label="User Name" value="" required="true"></h:inputText>
-            <h:inputText label="Password" value="" required="true"></h:inputText>
+            <h:outputText value="Username:"></h:outputText>
+            <h:inputText label="User Name" value="" required="true"><f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText> 
+            <h:outputText value="Password:"></h:outputText>
+            <h:inputText label="Password" value="" required="true"><f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>
             <h:commandButton action="#{userController.existingUser}" value="Login"></h:commandButton>
-            </h:panelGrid>
-            
+            </h:panelGrid>           
         </h:form>
-        <h1>New User Registration</h1>
+        <hr></hr>
+        <h3>New User Registration</h3>
         <h:form>
-            <h:inputText label="User Name" value="#{users.userName}" required="true">
-            <f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>
-            <h:inputText label="Password" value="#{users.userPassword}" required="true"></h:inputText>
+            <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+            <h:outputText value="Username:"></h:outputText>
+            <h:inputText label="User Name" value="#{users.userName}" required="true"><f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>          
+            <h:outputText value="Password:"></h:outputText>
+            <h:inputText label="Password" value="#{users.userPassword}" required="true"><f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>
             <h:commandButton action="#{userController.userRegistration}" value="Create New User"></h:commandButton>
+            </h:panelGrid> 
         </h:form>
     </h:body>
 </html>

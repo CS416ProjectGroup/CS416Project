@@ -18,10 +18,9 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Krzysztof
+ * @author KK
  */
 @ManagedBean
-@SessionScoped
 @Entity
 
 public class Bets implements Serializable {

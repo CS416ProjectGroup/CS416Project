@@ -1,12 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h1>CasinoNavigationBanner</h1>
+        <hr></hr>
+        <h3>User Profile</h3>
+        <h:messages style="color:red;font-weight:bold;"></h:messages>
+        <h:form>
+            <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+                <h:outputText value="User:"></h:outputText>
+                <h:outputText value="#{users.userName}"></h:outputText>
+                <h:outputText value="Current Funds:"></h:outputText>
+                <h:outputText id="moneyAmount" value="#{users.money}"></h:outputText>
+  
+                            
+                <h:outputText value="Add funds"></h:outputText>
+                <h:inputText id="addFunds" value="#{users.newMoney}">
+                     <f:validator validatorId="MoneyValidator" />
+                </h:inputText>
+                
+                <h:commandButton actionListener="#{users.addFunds}" value="Pretend Bank Stuff">
+                    <f:ajax execute="addFunds" render="moneyAmount" />
+                </h:commandButton>    
+            </h:panelGrid>
+        </h:form>
+        
     </h:body>
 </html>
 

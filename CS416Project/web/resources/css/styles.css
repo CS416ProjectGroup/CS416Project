@@ -1,0 +1,26 @@
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.leftAlign{
+    text-align:left;
+}
+
+.centerAlign{
+    text-align:center;
+}
+
+.fieldnames{
+    text-align:right;
+    font-weight:bold;
+}
+
+.errorMsg{
+    color:red;
+    font-weight:bold;
+}
+
+.blue{
+    color:blue;
+}
