@@ -19,7 +19,7 @@ import javax.transaction.UserTransaction;
 
 /**
  *
- * @author Adam
+ * @author AB
  */
 @ManagedBean
 public class UserController {

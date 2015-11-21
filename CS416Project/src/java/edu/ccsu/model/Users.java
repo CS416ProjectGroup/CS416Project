@@ -14,6 +14,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ *
+ * @author AB
+ */
 @ManagedBean
 @SessionScoped
 @Entity
@@ -25,12 +29,16 @@ public class Users implements Serializable {
     private String userName = "";
     private String userPassword = "";
     private double money = new Long(0);
+    private double newMoney = new Long(0);
 
 
     public Users() {
     }
 
-
+    public void addFunds(ActionEvent event) {
+        money = money + getNewMoney();
+    }
+        
     /**
      * @return the userId
      */
@@ -81,10 +89,24 @@ public class Users implements Serializable {
     }
 
     /**
-     * @param stateOwned the stateOwned to set
+     * @param money the money to set
      */
     public void setMoney(double money) {
         this.money = money;
+    }
+    
+      /**
+     * @return the newMoney
+     */
+    public double getNewMoney() {
+        return newMoney;
+    }
+    
+      /**
+     * @param stateOwned the stateOwned to set
+     */
+    public void setNewMoney(double newMoney) {
+        this.newMoney = newMoney;
     }
 
 }
