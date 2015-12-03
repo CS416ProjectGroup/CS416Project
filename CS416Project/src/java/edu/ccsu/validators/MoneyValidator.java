@@ -27,11 +27,11 @@ public class MoneyValidator implements Validator{
         //double Dbet = Double.parseDouble(bet);
         HtmlInputText htmlInputText = (HtmlInputText)component;
         if (Dbet<0){
-            FacesMessage facesMessage =  new FacesMessage("You can't bet negative money!");
+            FacesMessage facesMessage =  new FacesMessage("Money can not be a negative value!");
             throw new ValidatorException(facesMessage);
         }
         if (bet.matches("0-9")){
-            FacesMessage facesMessage =  new FacesMessage("Bet must be a numeric value!");
+            FacesMessage facesMessage =  new FacesMessage("Money must be a numeric value!");
             throw new ValidatorException(facesMessage);    
         }
     }

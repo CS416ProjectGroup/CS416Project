@@ -11,16 +11,16 @@
         <hr></hr>
         <h3>User Login</h3>
         <h:messages style="color:red;font-weight:bold;"></h:messages>
-        <h:form>
+        <form method="post" action="j_security_check">
             <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
             <h:outputText value="Username:"></h:outputText>
-            <h:inputText label="User Name" value="" required="true"><f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText> 
+            <input type="text" id="j_username" name="u_username" />
             <h:outputText value="Password:"></h:outputText>
-            <h:inputText label="Password" value="" required="true"><f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>
-            <h:commandButton action="#{userController.existingUser}" value="Login"></h:commandButton>
+            <input type="pass" id="j_password" name="j_password"/>
+            <input type="submit" value="Login"/>
             </h:panelGrid>           
-        </h:form>
-        <hr></hr>
+        </form>
+        <!--    Replaced by userRegistration.xhtml
         <h3>New User Registration</h3>
         <h:form>
             <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
@@ -28,8 +28,9 @@
             <h:inputText label="User Name" value="#{users.userName}" required="true"><f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>          
             <h:outputText value="Password:"></h:outputText>
             <h:inputText label="Password" value="#{users.userPassword}" required="true"><f:validateLength minimum="3" maximum="16"></f:validateLength></h:inputText>
-            <h:commandButton action="#{userController.userRegistration}" value="Create New User"></h:commandButton>
+            <h:commandButton action="#{LoginController.createUser}" value="Create New User"></h:commandButton>
             </h:panelGrid> 
         </h:form>
+        -->
     </h:body>
 </html>
