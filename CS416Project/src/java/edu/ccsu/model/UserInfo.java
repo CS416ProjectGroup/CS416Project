@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.ccsu.model;
+import static edu.ccsu.model.Group_.users;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
@@ -13,6 +14,11 @@ import javax.faces.model.SelectItem;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -21,18 +27,19 @@ import javax.persistence.Id;
 @ManagedBean
 @SessionScoped
 @Entity
-public class Users implements Serializable {
+public class UserInfo implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long userId;
-    private String userName = "";
-    private String userPassword = "";
+    private Long userInfoId;
+    @OneToOne
+    @JoinColumn(name = "userName")
+    private User user;
     private double money = new Long(0);
     private double newMoney = new Long(0);
 
 
-    public Users() {
+    public UserInfo() {
     }
 
     public void addFunds(ActionEvent event) {
@@ -40,45 +47,17 @@ public class Users implements Serializable {
     }
         
     /**
-     * @return the userId
+     * @return the userInfoId
      */
-    public Long getUserId() {
-        return userId;
+    public Long getUserInfoId() {
+        return userInfoId;
     }
 
     /**
-     * @param userId the userId to set
+     * @param userInfoId the userInfoId to set
      */
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    /**
-     * @return the userName
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * @param userName the userName to set
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    /**
-     * @return the password
-     */
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    /**
-     * @param userPassword the userPassword to set
-     */
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setUserInfoId(Long userInfoId) {
+        this.userInfoId = userInfoId;
     }
 
     /**

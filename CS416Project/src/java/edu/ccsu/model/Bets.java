@@ -31,8 +31,8 @@ public class Bets implements Serializable {
     @GeneratedValue
     private Long betId;
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private Users users;
+    @JoinColumn(name = "userName")
+    private User user;
     private Double bet;
     private Double win;
 
