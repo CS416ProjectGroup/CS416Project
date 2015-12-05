@@ -66,7 +66,21 @@ public class UserInfo implements Serializable {
     public double getMoney() {
         return money;
     }
+    
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+    
     /**
      * @param money the money to set
      */
@@ -82,7 +96,7 @@ public class UserInfo implements Serializable {
     }
     
       /**
-     * @param stateOwned the stateOwned to set
+     * @param newMoney the newMoney to set
      */
     public void setNewMoney(double newMoney) {
         this.newMoney = newMoney;

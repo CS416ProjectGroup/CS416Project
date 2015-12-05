@@ -7,15 +7,34 @@
     </h:head>
     <h:body>
         <h1>CasinoNavigationBanner</h1>
+        <form style="display:inline" action="/CS416Project/faces/user/UserProfile.xhtml">
+            <input type="submit" value="User Profile" />
+        </form>
+        <form style="display:inline" action="/CS416Project/index.xhtml">
+            <input type="submit" value="Home Page" />
+        </form>
+        <form style="display:inline" action="/CS416Project/faces/user/BlackJack.xhtml">
+            <input type="submit" value="Play BlackJack!" />
+        </form>
+        <form style="display:inline" action="/CS416Project/faces/UserRegistration.xhtml">
+            <input type="submit" value="Register New User" />
+        </form>
+        <form style="display:inline" action="/CS416Project/UserLogin.xhtml">
+            <input type="submit" value="Existing User Login" />
+        </form>
+        <form style="display:inline" action="/CS416Project/LogoutServlet">
+            <input type="submit" value="Logout" />
+        </form>
         <hr></hr>
-        <h:form>
-            <h2>Create user</h2>
+        <h2>Create user</h2>
+        <h:messages style="color:red;font-weight:bold;"></h:messages>
+        <h:form>                
             <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
                 <h:outputText value="Username:"></h:outputText>
-                <h:inputText label="username" value="#{users.username}" required="true">
+                <h:inputText label="username" value="#{user.username}" required="true">
                 </h:inputText>
                 <h:outputText value="Password"></h:outputText>
-                <h:inputSecret label="password" value="#{users.password}" required="true">
+                <h:inputSecret label="password" value="#{user.password}" required="true">
                 </h:inputSecret>
                 <h:commandButton action="#{userController.createUser()}" value="Submit"></h:commandButton>
             </h:panelGrid>
