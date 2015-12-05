@@ -21,6 +21,11 @@
     font-weight:bold;
 }
 
+.label{ 
+    display:inline-block;
+    width:100px;
+}
+
 .blue{
     color:blue;
 }
