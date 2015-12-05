@@ -25,16 +25,16 @@ public class UserController {
   private UserTransaction userTransaction;
   @ManagedProperty(value = "#{user}")
   private User user;
-  @ManagedProperty(value = "#{userInfo}")
-  private UserInfo userInfo;
+  //@ManagedProperty(value = "#{userInfo}")
+  //private UserInfo userInfo;
 
   public String createUser() {
     String returnValue = "Error";
     try {
       user.setPassword(Hash(user.getPassword()));
-      String[] userGroups = {"user"};
+      String[] userGroups = {"casinouser"};
       user.setGroupNames(userGroups);
-      userInfo.setMoney(50);
+      //userInfo.setMoney(50);
       userTransaction.begin();
       EntityManager em = entityManagerFactory.createEntityManager();
       for (String group : user.getGroupNames()) {
@@ -45,7 +45,7 @@ public class UserController {
         }
       }
       em.persist(user);
-      em.persist(userInfo);
+     // em.persist(userInfo);
       user.getGroups().stream().forEach((group) -> {
         em.persist(group);
       });
@@ -58,6 +58,9 @@ public class UserController {
     }
     return returnValue;
   }
+  
+
+  
 
   public String Hash(String password) throws NoSuchAlgorithmException {
     MessageDigest msgDigest = MessageDigest.getInstance("MD5");

@@ -8,18 +8,34 @@
     </h:head>
     <h:body>
         <h1>CasinoNavigationBanner</h1>
+        <form style="display:inline" action="/CS416Project/faces/user/UserProfile.xhtml">
+            <input type="submit" value="User Profile" />
+        </form>
+        <form style="display:inline" action="/CS416Project/index.xhtml">
+            <input type="submit" value="Home Page" />
+        </form>
+        <form style="display:inline" action="/CS416Project/faces/user/BlackJack.xhtml">
+            <input type="submit" value="Play BlackJack!" />
+        </form>
+        <form style="display:inline" action="/CS416Project/faces/UserRegistration.xhtml">
+            <input type="submit" value="Register New User" />
+        </form>
+        <form style="display:inline" action="/CS416Project/UserLogin.xhtml">
+            <input type="submit" value="Existing User Login" />
+        </form>
+        <form style="display:inline" action="/CS416Project/LogoutServlet">
+            <input type="submit" value="Logout" />
+        </form>
         <hr></hr>
         <h3>User Login</h3>
-        <h:messages style="color:red;font-weight:bold;"></h:messages>
-        <form method="post" action="j_security_check">
+        <form action="j_security_check" method="POST" >
             <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
-            <h:outputText value="Username:"></h:outputText>
-            <input type="text" id="j_username" name="u_username" />
-            <h:outputText value="Password:"></h:outputText>
-            <input type="pass" id="j_password" name="j_password"/>
-            <input type="submit" value="Login"/>
-            </h:panelGrid>           
-        </form>
+                <label style="display:inline-block; width:100px;">Username:</label><input type="text" id="j_username" name="j_username" />
+                <br></br>
+                <label style="display:inline-block; width:100px;">Password:</label><input type="pass" id="j_password" name="j_password"/>
+                <input type="submit" value="Login"/>       
+            </h:panelGrid>
+        </form>      
         <!--    Replaced by userRegistration.xhtml
         <h3>New User Registration</h3>
         <h:form>
