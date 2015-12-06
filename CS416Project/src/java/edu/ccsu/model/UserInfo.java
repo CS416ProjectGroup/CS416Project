@@ -55,6 +55,11 @@ public class UserInfo implements Serializable {
     public void addFunds(ActionEvent event) {
         money = money + getNewMoney();
     }   
+    
+    public void commitBet()
+    {
+        money = money - getNewMoney();
+    }
         
     /**
      * @return the userInfoId

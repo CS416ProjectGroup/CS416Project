@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Currently Playing: Black Jack!</h1>            
+        <form style="display:inline" action="/CS416Project/faces/user/BlackJackBet.xhtml">
+            <input type="submit" value="Give up on this one :(" />
+        </form>       
+        <hr></hr>
+        <h:form>
+            <h:outputText value="Your Remaining Funds:"></h:outputText>
+            <h:outputText value="#{userInfo.money}"></h:outputText> 
+            <h:outputText value="Your Current Bet:"></h:outputText>
+            <h:outputText value="#{bets.bet}"></h:outputText> 
+        </h:form>
+        <hr></hr>
+        <h:form>
+            <h:commandButton actionListener="#{blackJackController.playHit()}" value="Hit">
+                    <f:ajax execute="playHit" render="blackjackarea" />
+            </h:commandButton>  
+            <h:commandButton actionListener="#{blackJackController.playStay()}" value="Stay">
+                    <f:ajax execute="playStay" render="blackjackarea" />
+            </h:commandButton>  
+            <h:panelGroup layout="block" id="blackjackarea">
+    
+            </h:panelGroup>           
+        </h:form>
+    </h:body>
+</html>
+
