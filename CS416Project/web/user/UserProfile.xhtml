@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -33,17 +32,20 @@
         <h:form>
             <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
                 <h:outputText value="User:"></h:outputText>
-                <h:outputText value="#{users.userName}"></h:outputText>
+                
+                <h:outputText id="username" value="#{request.remoteUser}"></h:outputText>
                 <h:outputText value="Current Funds:"></h:outputText>
-                <h:outputText id="moneyAmount" value="#{users.money}"></h:outputText>
-  
+                <h:outputText id="moneyAmount" value="#{userInfo.money}"></h:outputText>
+                <h:commandButton actionListener="#{userController.getMatchingMoney(event, request.remoteUser)}" value="Get User Funds">
+                    <f:ajax execute="getMatchingMoney" render="moneyAmount" />
+                </h:commandButton>   
                             
                 <h:outputText value="Add funds"></h:outputText>
-                <h:inputText id="addFunds" value="#{users.newMoney}">
+                <h:inputText id="addFunds" value="#{userInfo.newMoney}">
                      <f:validator validatorId="MoneyValidator" />
                 </h:inputText>
                 
-                <h:commandButton actionListener="#{users.addFunds}" value="Pretend Bank Stuff">
+                <h:commandButton actionListener="#{userController.AddMoney(event, request.remoteUser)}" value="Pretend Bank Stuff">
                     <f:ajax execute="addFunds" render="moneyAmount profileMessages" />
                 </h:commandButton>    
             </h:panelGrid>
