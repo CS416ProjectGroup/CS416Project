@@ -3,27 +3,43 @@ package edu.ccsu.model;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
+import javax.transaction.UserTransaction;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 @Entity
 @Table(name = "USERS")
 public class User implements Serializable {
+    
+
+
 
   @Id
   private String username;
 
   private String password;
+  
+  //private double money = 50.0;
+  @OneToOne(mappedBy = "user")
+  private UserInfo userInfo;
+  //private double newMoney;
 
   @ManyToMany(mappedBy = "users")
   private Set<Group> groups = new HashSet();
@@ -31,6 +47,10 @@ public class User implements Serializable {
   @Transient
   private String[] groupNames;
 
+//  public void addFunds(ActionEvent event) {
+//       money = money + getNewMoney();      
+//  }
+  
   public User() {
   }
   
@@ -77,4 +97,32 @@ public class User implements Serializable {
   public void setGroups(Set<Group> groups) {
     this.groups = groups;
   }
+
+//    /**
+//     * @return the money
+//     */
+//    public double getMoney() {
+//        return money;
+//    }
+//
+//    /**
+//     * @param money the money to set
+//     */
+//    public void setMoney(double money) {
+//        this.money = money;
+//    }
+//
+//    /**
+//     * @return the newMoney
+//     */
+//    public double getNewMoney() {
+//        return newMoney;
+//    }
+//
+//    /**
+//     * @param newMoney the newMoney to set
+//     */
+//    public void setNewMoney(double newMoney) {
+//        this.newMoney = newMoney;
+//    }
 }
