@@ -59,6 +59,20 @@ public class Bets implements Serializable {
     public void setWin(Double win) {
         this.win = win;
     }
+    
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {

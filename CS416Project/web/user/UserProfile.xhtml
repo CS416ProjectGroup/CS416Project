@@ -14,7 +14,7 @@
         <form style="display:inline" action="/CS416Project/faces/user/UserProfile.xhtml">
             <input type="submit" value="User Profile" />
         </form>      
-        <form style="display:inline" action="/CS416Project/faces/user/BlackJack.xhtml">
+        <form style="display:inline" action="/CS416Project/faces/user/BlackJackBet.xhtml">
             <input type="submit" value="Play BlackJack!" />
         </form>
         <form style="display:inline" action="/CS416Project/faces/userRegistration.xhtml">
@@ -39,14 +39,14 @@
                 <h:commandButton actionListener="#{userController.getMatchingMoney(event, request.remoteUser)}" value="Get User Funds">
                     <f:ajax execute="getMatchingMoney" render="moneyAmount" />
                 </h:commandButton>   
-                            
+                     <h:outputText value=""></h:outputText>       
                 <h:outputText value="Add funds"></h:outputText>
                 <h:inputText id="addFunds" value="#{userInfo.newMoney}">
                      <f:validator validatorId="MoneyValidator" />
                 </h:inputText>
                 
                 <h:commandButton actionListener="#{userController.AddMoney(event, request.remoteUser)}" value="Pretend Bank Stuff">
-                    <f:ajax execute="addFunds" render="moneyAmount profileMessages" />
+                    <f:ajax execute="addMoney" render="moneyAmount profileMessages" />
                 </h:commandButton>    
             </h:panelGrid>
         </h:form>
