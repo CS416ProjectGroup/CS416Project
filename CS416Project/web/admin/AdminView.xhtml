@@ -28,79 +28,43 @@
         </form>
         <hr></hr>
         <h:form>           
-            <h:outputText value="Click for Users:"/>     
-            <h:commandButton value="Get Users" action="#{userController.returnUsers}">
-                 <f:ajax execute="userdatatable" render="userdatatable" />
+            <h:outputText value="Type for Users:"/>     
+            <h:inputText id="first" value="#{userInfo.user.username}">
+                <f:ajax event="keyup" execute="first" render="datatable @form"/>
+            </h:inputText>
+            
+            <hr></hr>
+            
+            <h:outputText value="Delete user by username:"/>     
+            <h:inputText id="usernameremove" value="#{userInfo.user.username}">
+            </h:inputText>           
+            <h:commandButton actionListener="#{userController.deleteUser(event)}" value="Delete">
+                    <f:ajax execute="usernameremove" render="datatable" />
             </h:commandButton> 
             
-            <h:dataTable id="userdatatable" value="#{UserController.returnUsers}" var="item" border="3" cellpadding="2" cellspacing="2">
+            <hr></hr>
+                       
+            <h:dataTable id="datatable" value="#{userController.matchingUsers()}" var="item" border="3" cellpadding="2" cellspacing="2">
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="UserId" />
+                        <h:outputText value="UserInfoId" />
                     </f:facet> 
                     <h:outputText value="#{item.userInfoId}" ></h:outputText>
-                </h:column>
-
+                </h:column> 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="UserName"/>
+                        <h:outputText value="UserName" />
                     </f:facet> 
-                    <h:outputText value="#{item.username}"></h:outputText>
-                </h:column>
-
+                    <h:outputText value="#{item.user.username}" ></h:outputText>
+                </h:column>                
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Money"/>
                     </f:facet> 
                     <h:outputText value="#{item.money}"></h:outputText>
                 </h:column>
-            </h:dataTable>
-        </h:form>
-        
-        <h:form>                
-            <h:outputText value="Enter User for search"/> 
-            <h:inputText id="userinfo" value="#{bets.userInfo}">
-                <f:ajax event="keyup" render="betdatatable"/>
-            </h:inputText> 
-
+            </h:dataTable>           
             
-            <br></br>
-            <h:dataTable id="betdatatable" value="#{BetsController.returnMatchingBets}" var="item" border="3" cellpadding="2" cellspacing="2">
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="UserId" />
-                    </f:facet> 
-                    <h:outputText value="#{item.userInfo}" ></h:outputText>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Bet"/>
-                    </f:facet> 
-                    <h:outputText value="#{item.bet}"></h:outputText>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Win"/>
-                    </f:facet> 
-                    <h:outputText value="#{item.win}"></h:outputText>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Player Score"/>
-                    </f:facet> 
-                    <h:outputText value="#{item.bjScore}"></h:outputText>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Dealer Score"/>
-                    </f:facet> 
-                    <h:outputText value="#{item.bjDealerScore}"></h:outputText>
-                </h:column>
-            </h:dataTable>                       
         </h:form>
     </h:body>
 </html>

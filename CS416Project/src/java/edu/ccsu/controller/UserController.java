@@ -10,7 +10,9 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,6 +23,7 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 @ManagedBean
+@RequestScoped
 public class UserController {
 
   @PersistenceUnit(unitName = "FinalProjectPU")
@@ -32,22 +35,58 @@ public class UserController {
   @ManagedProperty(value = "#{userInfo}")
   private UserInfo userInfo;
   
-  private List<UserInfo> currentList;
+  //private List<UserInfo> currentList;
+  private String searchterm;
 
-  public List returnUsers() {
-        List<UserInfo> userInfoList = new ArrayList();
+  public List matchingUsers() {
+        List<String> userInfoList = new ArrayList();
+        List<UserInfo> userlist = new ArrayList();
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        String selectSQL = "select u.userInfoId, u.user, u.money from UserInfo u";
-        try {
+        String selectSQL = "select u from UserInfo u where u.user.username like :username";
+        try 
+        {
             Query selectQuery = entityManager.createQuery(selectSQL);
+            selectQuery.setParameter("username", (userInfo.getUser().getUsername() + "%"));
             userInfoList = selectQuery.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
         entityManager.close();
-        currentList = userInfoList;
+        //currentList = userInfoList;
         return userInfoList;
     }
+  
+  public void deleteUser(ActionEvent event) 
+  {
+      EntityManager entityManager = entityManagerFactory.createEntityManager();     
+        try 
+        {
+            userTransaction.begin();
+            entityManager.joinTransaction();
+            
+            User deleteuser = entityManager.find(User.class, userInfo.getUser().getUsername());
+            
+            String deleteSQL = "delete from Bets b where b.userInfo.user = :username";    
+            Query deleteQuery = entityManager.createQuery(deleteSQL);
+            deleteQuery.setParameter("username", deleteuser);                     
+            int rowsaffect = deleteQuery.executeUpdate();
+            
+            String deleteSQL3 = "delete from UserInfo u where u.user = :username";    
+            Query deleteQuery3 = entityManager.createQuery(deleteSQL3);
+            deleteQuery3.setParameter("username", deleteuser);                     
+            int rowsaffect3 = deleteQuery3.executeUpdate();           
+            
+            String deleteSQL2 = "delete from User u where u.username= :username";    
+            Query deleteQuery2 = entityManager.createQuery(deleteSQL2);
+            deleteQuery2.setParameter("username", (userInfo.getUser().getUsername()));                     
+            int rowsaffect2 = deleteQuery2.executeUpdate();
+            
+            userTransaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    entityManager.close();
+  }
   
   public String createUser() 
   {
@@ -222,6 +261,20 @@ public class UserController {
   public void setUserInfo(UserInfo userInfo) {
     this.userInfo = userInfo;
   }
+
+    /**
+     * @return the searchterm
+     */
+    public String getSearchterm() {
+        return searchterm;
+    }
+
+    /**
+     * @param searchterm the searchterm to set
+     */
+    public void setSearchterm(String searchterm) {
+        this.searchterm = searchterm;
+    }
 }
 /*
  * To change this license header, choose License Headers in Project Properties.

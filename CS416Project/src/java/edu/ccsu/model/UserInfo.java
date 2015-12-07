@@ -44,7 +44,7 @@ public class UserInfo implements Serializable {
     
     @OneToOne    
     @JoinColumn(name="username")
-    private User user;
+    private User user = new User();
     
     @OneToMany(mappedBy="userInfo")
     private Set<Bets> bets; 
