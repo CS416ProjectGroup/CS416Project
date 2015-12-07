@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Playing Black Jack</title>
     </h:head>
     <h:body>
         <h1>Currently Playing: Black Jack!</h1>            
@@ -13,23 +13,24 @@
         </form>       
         <hr></hr>
         <h:form>
-            <h:outputText value="Your Remaining Funds:"></h:outputText>
-            <h:outputText value="#{userInfo.money}"></h:outputText> 
             <h:outputText value="Your Current Bet:"></h:outputText>
-            <h:outputText value="#{bets.bet}"></h:outputText> 
+            <h:outputText value="#{bets.bet}"></h:outputText>            
         </h:form>
-        <hr></hr>
+        <hr></hr>  
         <h:form>
-            <h:commandButton actionListener="#{blackJackController.playHit()}" value="Hit">
-                    <f:ajax execute="playHit" render="blackjackarea" />
-            </h:commandButton>  
-            <h:commandButton actionListener="#{blackJackController.playStay()}" value="Stay">
-                    <f:ajax execute="playStay" render="blackjackarea" />
-            </h:commandButton>  
-            <h:panelGroup layout="block" id="blackjackarea">
-    
-            </h:panelGroup>           
+        <h:commandButton actionListener="#{blackJackController.playHit()}" value="Hit">
+                <f:ajax execute="playHit" render="scoreArea handArea" />
+        </h:commandButton>  
+        <h:commandButton action="#{blackJackController.playStay()}" value="Stay">
+        </h:commandButton>           
+            <hr></hr>
+        <h:outputText value="Your Current Total:"></h:outputText>
+        <h:outputText id="scoreArea" value="#{bets.bjScore}"></h:outputText>     
+        <hr></hr>
+        <h:outputText value="Your Current Hand:"></h:outputText>
+        <h:outputText id="handArea" value="#{bets.bjHand}"></h:outputText>  
         </h:form>
+    
     </h:body>
 </html>
 
