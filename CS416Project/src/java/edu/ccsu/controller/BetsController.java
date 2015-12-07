@@ -44,7 +44,8 @@ public class BetsController {
             e.printStackTrace();
         }
         //currentList = userInfoList;
-        return betsList;
+        entityManager.close();
+        return betsList;       
     }
 
     /**
