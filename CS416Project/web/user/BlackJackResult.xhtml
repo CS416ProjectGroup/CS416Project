@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Black Jack Result</title>
     </h:head>
     <h:body>
         <h1>CasinoNavigationBanner</h1>
@@ -26,21 +27,19 @@
             <input type="submit" value="Logout" />
         </form>
         <hr></hr>
-        Black Jack error! 
-        <h:form>                
-            <h:panelGrid columns="2" columnClasses="leftAlign,rightAlign">
-                <h:outputText value="Username:"></h:outputText>
-                <h:outputText value="#{userInfo.user.username}"></h:outputText>               
-                <h:outputText value="Your Proposed Bet:"></h:outputText>
-                <h:outputText value="#{bets.bet}"></h:outputText> 
-                <h:outputText value="Your available funds:"></h:outputText>
-                <h:outputText style="color:red;font-weight:bold;" value="#{userInfo.money}"></h:outputText>                 
-            </h:panelGrid>
+        <h2>BlackJack Results!</h2>
+        <h:messages style="color:red;font-weight:bold;"></h:messages>
+        <h:form>
+            <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+            <h:outputText value="Your Bet Was:"></h:outputText>
+            <h:outputText value="#{bets.bet}"></h:outputText>   
+            <h:outputText value="Your Winnings Were:"></h:outputText>
+            <h:outputText value="#{bets.win}"></h:outputText>   
+            <h:outputText value="Your Final Hand Was:"></h:outputText>
+            <h:outputText value="#{bets.bjHand}"></h:outputText>  
+            <h:outputText value="Your Dealer's Final Hand Was:"></h:outputText>
+            <h:outputText value="#{bets.bjDealerHand}"></h:outputText>  
+            </h:panelGrid>             
         </h:form>
-        Why don't you add more funds to account? 
-        <form style="display:inline" action="/CS416Project/faces/user/UserProfile.xhtml">
-            <input type="submit" value="User Profile" />
-        </form> 
     </h:body>
 </html>
-

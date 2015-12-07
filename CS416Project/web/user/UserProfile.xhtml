@@ -14,7 +14,7 @@
         <form style="display:inline" action="/CS416Project/faces/user/UserProfile.xhtml">
             <input type="submit" value="User Profile" />
         </form>      
-        <form style="display:inline" action="/CS416Project/faces/user/BlackJackBet.xhtml">
+        <form style="display:inline" action="/CS416Project/BlackJackRelog">
             <input type="submit" value="Play BlackJack!" />
         </form>
         <form style="display:inline" action="/CS416Project/faces/userRegistration.xhtml">
@@ -41,7 +41,7 @@
                 </h:commandButton>   
                      <h:outputText value=""></h:outputText>       
                 <h:outputText value="Add funds"></h:outputText>
-                <h:inputText id="addFunds" value="#{userInfo.newMoney}">
+                <h:inputText id="addMoney" value="#{userInfo.newMoney}">
                      <f:validator validatorId="MoneyValidator" />
                 </h:inputText>
                 
