@@ -333,6 +333,7 @@ public class BlackJackController
                     iValue = Integer.parseInt(sValue);
                 }
                 bets.setBjDealerScore(bets.getBjDealerScore() + iValue);
+                bets.setBjDealerHand(dealerHand);
                 if(bets.getBjDealerScore() > 21.0)
                 {
                     String testAce;
@@ -357,17 +358,17 @@ public class BlackJackController
                             aceFound = true;
                         }               
                     }
+                    bets.setBjDealerHand(dealerHand);
                     if(aceFound == false)
                     {                   
                         ArrayList<String> busted = new ArrayList<String>();
-                        busted.add("Played Busted!");
-                        bets.setBjHand(busted);
+                        busted.add("Dealer Busted!");
                         bets.setBjDealerHand(busted);
                         returnValue = "BlackJackResult";
                     } 
                 }
             }   
-            bets.setBjDealerHand(dealerHand);
+            
       }
       
       
@@ -377,7 +378,7 @@ public class BlackJackController
         if(bets.getBjDealerScore() >= bets.getBjScore() && bets.getBjDealerScore() <= 21.0)
         { 
             //Dealer Wins
-            if(bets.getBjDealerScore().compareTo(bets.getBjScore()) == 1)
+            if(bets.getBjDealerScore().compareTo(bets.getBjScore()) == 0)
             {
                 bets.setWin(bets.getBet());
             }

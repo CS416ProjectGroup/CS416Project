@@ -31,7 +31,24 @@ public class UserController {
   private User user;
   @ManagedProperty(value = "#{userInfo}")
   private UserInfo userInfo;
+  
+  private List<UserInfo> currentList;
 
+  public List returnUsers() {
+        List<UserInfo> userInfoList = new ArrayList();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        String selectSQL = "select u.userInfoId, u.user, u.money from UserInfo u";
+        try {
+            Query selectQuery = entityManager.createQuery(selectSQL);
+            userInfoList = selectQuery.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        entityManager.close();
+        currentList = userInfoList;
+        return userInfoList;
+    }
+  
   public String createUser() 
   {
     String returnValue = "Error";
